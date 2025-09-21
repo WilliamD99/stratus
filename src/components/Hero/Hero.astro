@@ -1,0 +1,151 @@
+---
+import Button from "@/components/starwind/button/Button.astro";
+---
+
+<section
+  id="hero"
+  class="relative min-h-screen w-full overflow-hidden"
+  style="background: linear-gradient(135deg, #00AEEF 0%, #2E3A46 50%, #2E3A46 100%)"
+>
+  <!-- Background image placeholder -->
+  <div class="absolute inset-0 bg-black/40 z-10"></div>
+  <div
+    class="absolute inset-0 bg-cover bg-center bg-no-repeat"
+    style="background-image: linear-gradient(135deg, rgba(0, 174, 239, 0.7), rgba(46, 58, 70, 0.8)), url('/src/assets/hero.jpg');"
+  >
+  </div>
+
+  <!-- Hero content -->
+  <div
+    class="relative z-20 flex items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8"
+  >
+    <div class="text-center max-w-5xl mx-auto">
+      <!-- Main headline -->
+      <h1
+        class="stratus-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-5xl 2xl:text-8xl text-white leading-tight mb-6 tracking-tight"
+      >
+        Professional
+        <span
+          class="block text-transparent bg-clip-text"
+          style="background: linear-gradient(to right, #2ECC71, #BDC3C7, #FFFFFF); -webkit-background-clip: text; background-clip: text;"
+        >
+          Cleaning Services
+        </span>
+        <span class="block font-semibold mt-2"> You Can Trust </span>
+      </h1>
+
+      <!-- Description -->
+      <p
+        class="stratus-body text-base sm:text-sm lg:text-lg 2xl:text-xl mx-auto mt-4 mb-4 2xl:mt-8 2xl:mb-12 max-w-2xl 2xl:max-w-3xl leading-relaxed font-light"
+        style="color: #BDC3C7"
+      >
+        We provide exceptional commercial and residential cleaning services with
+        attention to detail, reliability, and eco-friendly solutions that keep
+        your spaces spotless and healthy.
+      </p>
+
+      <!-- CTA Buttons -->
+      <div
+        class="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center mt-6 2xl:mt-12"
+      >
+        <Button
+          variant="primary"
+          size="lg"
+          href="#contact"
+          class="stratus-cta text-base 2xl:text-lg min-w-[200px] shadow-lg"
+        >
+          Get Free Estimate
+        </Button>
+      </div>
+
+      <!-- Trust indicators -->
+      <div
+        class="hidden md:flex mt-8 2xl:mt-12 flex-col sm:flex-row items-center justify-center gap-8"
+        style="color: #BDC3C7"
+      >
+        <div class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 rounded-full flex items-center justify-center"
+            style="background-color: #2ECC71"
+          >
+            <svg
+              class="w-4 h-4 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <span class="text-sm sm:text-base font-medium"
+            >Licensed & Insured</span
+          >
+        </div>
+        <div class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 rounded-full flex items-center justify-center"
+            style="background-color: #2ECC71"
+          >
+            <svg
+              class="w-4 h-4 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <span class="text-sm sm:text-base font-medium"
+            >Eco-Friendly Products</span
+          >
+        </div>
+        <div class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 rounded-full flex items-center justify-center"
+            style="background-color: #2ECC71"
+          >
+            <svg
+              class="w-4 h-4 text-white"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <span class="text-sm sm:text-base font-medium">24/7 Available</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Decorative elements -->
+  <div
+    class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-white/10 to-transparent z-10"
+  >
+  </div>
+
+  <!-- Scroll indicator -->
+  <div
+    class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce"
+  >
+    <svg
+      class="w-6 h-6 text-white/70"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+    </svg>
+  </div>
+</section>

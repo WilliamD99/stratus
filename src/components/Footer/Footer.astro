@@ -1,0 +1,150 @@
+---
+import siteData from "@/config/siteData.json";
+import navConfig from "@/config/navData.json";
+import logo from "@/assets/site-logo.png";
+import { Image } from "astro:assets";
+---
+
+<footer
+  class="pt-12 pb-6 mt-auto"
+  style="background-color: #2E3A46; color: #FFFFFF"
+>
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- First Column: Logo + Company Name + Description -->
+      <div class="space-y-4">
+        <div class="flex items-center space-x-3">
+          <Image
+            src={logo}
+            alt={`${siteData.name} logo`}
+            loading="lazy"
+            width={40}
+            height={40}
+            class="h-10 w-10"
+          />
+          <div class="stratus-tagline text-xl text-white">
+            {siteData.name}
+          </div>
+        </div>
+        <p class="text-sm leading-relaxed max-w-xs" style="color: #BDC3C7">
+          {siteData.description}
+        </p>
+      </div>
+
+      <!-- Second Column: Address + Contact -->
+      <div class="space-y-4 md:text-right">
+        <h3 class="stratus-tagline text-lg text-white">Contact Information</h3>
+        <div class="space-y-3 text-sm" style="color: #BDC3C7">
+          <div class="flex items-start md:justify-end space-x-2">
+            <div class="w-4 flex justify-end">
+              <svg
+                class="w-4 h-4 mt-0.5 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                  clip-rule="evenodd"></path>
+              </svg>
+            </div>
+            <div class="text-right">
+              <div>61 - 5510 Admiral Way</div>
+              <div>Delta, BC V4K0C3</div>
+            </div>
+          </div>
+          <div class="flex items-center md:justify-end space-x-2">
+            <div class="w-4 flex justify-end">
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+                ></path>
+              </svg>
+            </div>
+            <a
+              href="tel:+16043757364"
+              class="hover:text-white transition-colors duration-200"
+            >
+              (604)-375-7364
+            </a>
+          </div>
+          <div class="flex items-center md:justify-end space-x-2">
+            <div class="w-4 flex justify-end">
+              <svg
+                class="w-4 h-4 flex-shrink-0"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+                ></path>
+                <path
+                  d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+                ></path>
+              </svg>
+            </div>
+            <a
+              href="mailto:info@stratusjanitorial.com"
+              class="hover:text-white transition-colors duration-200"
+            >
+              info@stratusjanitorial.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Column: Navigation Links -->
+      <div class="space-y-4">
+        <h3 class="stratus-tagline text-lg text-white md:text-right">
+          Quick Links
+        </h3>
+        <nav class="space-y-2">
+          {
+            navConfig.map((navItem) => (
+              <a
+                href={navItem.link}
+                class="block text-sm hover:text-white transition-colors duration-200 md:text-right"
+                style="color: #BDC3C7"
+                {...(navItem.newTab && {
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                })}
+              >
+                {navItem.text}
+              </a>
+            ))
+          }
+          <!-- Privacy Policy -->
+        </nav>
+      </div>
+    </div>
+
+    <!-- Bottom Section: Copyright -->
+    <div
+      class="border-t mt-8 pt-6"
+      style="border-color: rgba(189, 195, 199, 0.3)"
+    >
+      <div
+        class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0"
+      >
+        <p class="text-sm text-right" style="color: #BDC3C7">
+          © {new Date().getFullYear()}
+          {siteData.name}. All rights reserved.
+        </p>
+        <div class="flex space-x-6 text-sm" style="color: #BDC3C7">
+          <span class="">
+            Built and Maintained by <a
+              href="https://github.com/WilliamD99"
+              class="font-semibold hover:text-white transition-colors duration-200"
+              >Will Doan</a
+            >
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

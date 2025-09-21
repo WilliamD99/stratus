@@ -1,0 +1,157 @@
+---
+import Button from "@/components/starwind/button/Button.astro";
+import StratusCard from "@/components/StratusCard/StratusCard.astro";
+---
+
+<!-- 
+  This component demonstrates how to use the Stratus theme system.
+  Remove this file in production - it's just for reference.
+-->
+<section class="bg-pure-white py-12">
+  <div class="container mx-auto px-4">
+    <!-- Typography Examples -->
+    <div class="mb-12">
+      <h1 class="stratus-heading text-4xl mb-4">
+        Primary Heading (Stratus Blue)
+      </h1>
+      <h2 class="stratus-heading-secondary text-3xl mb-4">
+        Secondary Heading (Slate Gray)
+      </h2>
+      <p class="stratus-tagline text-xl mb-4">
+        This is a tagline using Poppins font (Stratus Blue)
+      </p>
+      <p class="stratus-body text-lg mb-4">
+        This is body text using Open Sans font (Slate Gray). It's professional,
+        highly readable, and perfect for longer content descriptions.
+      </p>
+    </div>
+
+    <!-- Color Examples -->
+    <div class="mb-12">
+      <h2 class="stratus-heading text-2xl mb-6">Color Palette</h2>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div
+          class="h-20 rounded-lg flex items-center justify-center"
+          style="background-color: #00AEEF"
+        >
+          <span class="text-white text-sm font-medium">Stratus Blue</span>
+        </div>
+        <div
+          class="h-20 rounded-lg flex items-center justify-center"
+          style="background-color: #2E3A46"
+        >
+          <span class="text-white text-sm font-medium">Slate Gray</span>
+        </div>
+        <div
+          class="bg-white border-2 h-20 rounded-lg flex items-center justify-center"
+          style="border-color: #BDC3C7"
+        >
+          <span class="text-sm font-medium" style="color: #2E3A46"
+            >Pure White</span
+          >
+        </div>
+        <div
+          class="h-20 rounded-lg flex items-center justify-center"
+          style="background-color: #2ECC71"
+        >
+          <span class="text-white text-sm font-medium">Emerald Green</span>
+        </div>
+        <div
+          class="h-20 rounded-lg flex items-center justify-center"
+          style="background-color: #BDC3C7"
+        >
+          <span class="text-sm font-medium" style="color: #2E3A46"
+            >Silver Gray</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Button Examples -->
+    <div class="mb-12">
+      <h2 class="stratus-heading text-2xl mb-6">Buttons & CTAs</h2>
+      <div class="flex flex-wrap gap-4">
+        <button class="stratus-cta"> Primary CTA Button </button>
+        <Button
+          variant="primary"
+          class="text-white hover:opacity-90"
+          style="background-color: #00AEEF"
+        >
+          Stratus Button
+        </Button>
+        <Button
+          variant="secondary"
+          class="text-white hover:opacity-90"
+          style="background-color: #2ECC71"
+        >
+          Eco-Friendly Action
+        </Button>
+      </div>
+    </div>
+
+    <!-- Card Examples -->
+    <div class="mb-12">
+      <h2 class="stratus-heading text-2xl mb-6">Reusable Cards</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <StratusCard
+          title="Primary Card"
+          description="This card uses the primary variant with white background and Stratus Blue accent."
+          variant="primary"
+        />
+        <StratusCard
+          title="Secondary Card"
+          description="This card uses the secondary variant with Slate Gray background."
+          variant="secondary"
+        />
+        <StratusCard
+          title="Accent Card"
+          description="This card uses the accent variant with Emerald Green background for eco-friendly content."
+          variant="accent"
+        />
+      </div>
+    </div>
+
+    <!-- Usage Instructions -->
+    <div
+      class="p-8 rounded-lg"
+      style="background-color: rgba(189, 195, 199, 0.1)"
+    >
+      <h2 class="stratus-heading text-2xl mb-4">How to Use This Theme</h2>
+      <div class="stratus-body space-y-4">
+        <p>
+          <strong>For Colors:</strong> Use the custom Tailwind classes like <code
+            class="bg-slate-gray/10 px-2 py-1 rounded">bg-stratus-blue</code
+          >,
+          <code class="bg-slate-gray/10 px-2 py-1 rounded">text-slate-gray</code
+          >, etc.
+        </p>
+        <p>
+          <strong>For Typography:</strong> Use the utility classes like <code
+            class="bg-slate-gray/10 px-2 py-1 rounded">.stratus-heading</code
+          >,
+          <code class="bg-slate-gray/10 px-2 py-1 rounded">.stratus-body</code>, <code
+            class="bg-slate-gray/10 px-2 py-1 rounded">.stratus-tagline</code
+          >.
+        </p>
+        <p>
+          <strong>For CTAs:</strong> Use the <code
+            class="bg-slate-gray/10 px-2 py-1 rounded">.stratus-cta</code
+          > class for consistent call-to-action styling.
+        </p>
+        <p>
+          <strong>CSS Variables:</strong> You can also use CSS variables directly
+          like <code class="bg-slate-gray/10 px-2 py-1 rounded"
+            >var(--stratus-blue)</code
+          > in custom styles.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+  }
+</style>

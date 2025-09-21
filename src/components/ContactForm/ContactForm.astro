@@ -1,0 +1,366 @@
+---
+import Button from "@/components/starwind/button/Button.astro";
+---
+
+<section id="contact" class="w-full bg-white py-12 sm:py-20 lg:py-24 xl:py-28">
+  <div class="max-w-7xl 2xl:max-w-[86rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <!-- Section Header -->
+      <div class="text-center mb-12">
+        <div class="text-2xl leading-tight mb-4 font-semibold">
+          Get in Touch
+        </div>
+        <h2
+          class="text-3xl sm:text-4xl lg:text-5xl leading-tight mb-6 font-bold"
+        >
+          Ready to Transform
+          <span
+            class="block text-transparent bg-clip-text font-bold"
+            style="background: linear-gradient(to right, #00AEEF, #2ECC71, #2E3A46); -webkit-background-clip: text; background-clip: text;"
+          >
+            Your Building?
+          </span>
+        </h2>
+        <p class="stratus-body text-lg leading-relaxed max-w-2xl mx-auto">
+          Get a customized cleaning solution for your residential building. Tell
+          us about your property and we'll provide a tailored quote.
+        </p>
+      </div>
+
+      <!-- Contact Form -->
+      <div
+        class="bg-white rounded-2xl shadow-xl border border-silver-gray/20 p-8 lg:p-12"
+      >
+        <form class="space-y-6" action="#" method="POST">
+          <!-- Personal Information -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Name Field -->
+            <div>
+              <label
+                for="name"
+                class="block text-sm font-semibold text-slate-gray mb-2"
+              >
+                Full Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray"
+                placeholder="Enter your full name"
+              />
+            </div>
+
+            <!-- Email Field -->
+            <div>
+              <label
+                for="email"
+                class="block text-sm font-semibold text-slate-gray mb-2"
+              >
+                Email Address <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray"
+                placeholder="Enter your email address"
+              />
+            </div>
+          </div>
+
+          <!-- Building Information -->
+          <div class="space-y-6">
+            <h3
+              class="text-xl font-semibold text-slate-gray border-b border-silver-gray/30 pb-2"
+            >
+              Building Information
+            </h3>
+
+            <!-- Building Name -->
+            <div>
+              <label
+                for="building-name"
+                class="block text-sm font-semibold text-slate-gray mb-2"
+              >
+                Building Name <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="building-name"
+                name="building-name"
+                required
+                class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray"
+                placeholder="Enter building name or address"
+              />
+            </div>
+
+            <!-- Floors and Units -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <!-- Number of Floors -->
+              <div>
+                <label
+                  for="floors"
+                  class="block text-sm font-semibold text-slate-gray mb-2"
+                >
+                  Number of Floors <span class="text-red-500">*</span>
+                </label>
+                <select
+                  id="floors"
+                  name="floors"
+                  required
+                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray"
+                >
+                  <option value="">Select number of floors</option>
+                  <option value="3-5">3-5 floors</option>
+                  <option value="6-10">6-10 floors</option>
+                  <option value="11-20">11-20 floors</option>
+                  <option value="21-30">21-30 floors</option>
+                  <option value="30+">30+ floors</option>
+                </select>
+              </div>
+
+              <!-- Number of Units -->
+              <div>
+                <label
+                  for="units"
+                  class="block text-sm font-semibold text-slate-gray mb-2"
+                >
+                  Number of Units <span class="text-red-500">*</span>
+                </label>
+                <select
+                  id="units"
+                  name="units"
+                  required
+                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray"
+                >
+                  <option value="">Select number of units</option>
+                  <option value="10-25">10-25 units</option>
+                  <option value="26-50">26-50 units</option>
+                  <option value="51-100">51-100 units</option>
+                  <option value="101-200">101-200 units</option>
+                  <option value="200+">200+ units</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Amenities -->
+            <div>
+              <label class="block text-sm font-semibold text-slate-gray mb-3">
+                Building Amenities <span class="text-gray-400"
+                  >(Select all that apply)</span
+                >
+              </label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="lobby"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Lobby/Reception</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="gym"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Fitness Center/Gym</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="pool"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Swimming Pool</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="lounge"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Community Lounge</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="rooftop"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Rooftop Terrace</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="parking"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Parking Garage</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="laundry"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Laundry Facilities</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="mailroom"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Mailroom</span>
+                </label>
+                <label class="flex items-center space-x-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    value="other"
+                    class="w-4 h-4 text-stratus-blue border-silver-gray rounded focus:ring-stratus-blue focus:ring-2"
+                  />
+                  <span class="text-slate-gray">Other</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div>
+              <label
+                for="message"
+                class="block text-sm font-semibold text-slate-gray mb-2"
+              >
+                Additional Information
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="4"
+                class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray resize-vertical"
+                placeholder="Tell us about any specific cleaning requirements, current challenges, or questions you have..."
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="flex flex-col sm:flex-row gap-4 pt-6">
+            <Button
+              type="submit"
+              variant="primary"
+              size="lg"
+              class="flex-1 sm:flex-initial px-8 py-4 text-lg font-semibold stratus-cta"
+            >
+              Get Your Free Quote
+            </Button>
+            <div class="text-sm text-slate-gray/80 flex items-center">
+              <svg
+                class="w-4 h-4 mr-2 text-emerald-green"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clip-rule="evenodd"></path>
+              </svg>
+              We'll respond within 24 hours
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Contact Information -->
+      <div class="mt-12 text-center">
+        <p class="stratus-body text-lg mb-4">
+          Prefer to speak directly? We're here to help!
+        </p>
+        <div
+          class="flex flex-col sm:flex-row justify-center items-center gap-6 text-slate-gray"
+        >
+          <a
+            href="tel:+1234567890"
+            class="flex items-center gap-2 hover:text-stratus-blue transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
+              ></path>
+            </svg>
+            (123) 456-7890
+          </a>
+          <a
+            href="mailto:info@stratusjanitorial.com"
+            class="flex items-center gap-2 hover:text-stratus-blue transition-colors"
+          >
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path
+                d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"
+              ></path>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"
+              ></path>
+            </svg>
+            info@stratusjanitorial.com
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Custom styles for better form appearance */
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  /* Checkbox styling */
+  input[type="checkbox"] {
+    accent-color: #00aeef;
+  }
+
+  /* Focus styles */
+  input:focus,
+  select:focus,
+  textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+  }
+
+  /* Form validation styles */
+  input:invalid:not(:placeholder-shown),
+  select:invalid:not(:placeholder-shown) {
+    border-color: #ef4444;
+  }
+
+  input:valid,
+  select:valid {
+    border-color: #2ecc71;
+  }
+</style>

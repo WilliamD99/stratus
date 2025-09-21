@@ -1,0 +1,216 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/forms";
+@variant dark (&:where(.dark, .dark *));
+
+@theme {
+	--animate-accordion-down: accordion-down 0.2s ease-out;
+	--animate-accordion-up: accordion-up 0.2s ease-out;
+
+	@keyframes accordion-down {
+		from {
+			height: 0;
+		}
+		to {
+			height: var(--starwind-accordion-content-height);
+		}
+	}
+
+	@keyframes accordion-up {
+		from {
+			height: var(--starwind-accordion-content-height);
+		}
+		to {
+			height: 0;
+		}
+	}
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-info: var(--info);
+	--color-info-foreground: var(--info-foreground);
+	--color-success: var(--success);
+	--color-success-foreground: var(--success-foreground);
+	--color-warning: var(--warning);
+	--color-warning-foreground: var(--warning-foreground);
+	--color-error: var(--error);
+	--color-error-foreground: var(--error-foreground);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-outline: var(--outline);
+
+	--radius-xs: calc(var(--radius) - 0.375rem);
+	--radius-sm: calc(var(--radius) - 0.25rem);
+	--radius-md: calc(var(--radius) - 0.125rem);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 0.25rem);
+	--radius-2xl: calc(var(--radius) + 0.5rem);
+	--radius-3xl: calc(var(--radius) + 1rem);
+}
+
+@layer base {
+	:root {
+		/* Stratus Brand Colors */
+		--stratus-blue: #00AEEF;
+		--slate-gray: #2E3A46;
+		--pure-white: #FFFFFF;
+		--emerald-green: #2ECC71;
+		--silver-gray: #BDC3C7;
+		--text-black: #111111;
+		
+		/* Theme Variables */
+		--background: var(--pure-white);
+		--foreground: var(--text-black);
+		--card: var(--pure-white);
+		--card-foreground: var(--slate-gray);
+		--popover: var(--pure-white);
+		--popover-foreground: var(--slate-gray);
+		--primary: var(--stratus-blue);
+		--primary-foreground: var(--pure-white);
+		--secondary: var(--slate-gray);
+		--secondary-foreground: var(--pure-white);
+		--muted: var(--silver-gray);
+		--muted-foreground: var(--slate-gray);
+		--accent: var(--emerald-green);
+		--accent-foreground: var(--pure-white);
+		--info: var(--stratus-blue);
+		--info-foreground: var(--pure-white);
+		--success: var(--emerald-green);
+		--success-foreground: var(--pure-white);
+		--warning: var(--color-amber-300);
+		--warning-foreground: var(--color-amber-950);
+		--error: var(--color-red-700);
+		--error-foreground: var(--pure-white);
+		--border: var(--silver-gray);
+		--input: var(--silver-gray);
+		--outline: var(--stratus-blue);
+		--radius: 0.5rem;
+	}
+
+	.dark {
+		/* Dark theme maintains Stratus brand colors but with adjusted backgrounds */
+		--background: var(--slate-gray);
+		--foreground: var(--pure-white);
+		--card: var(--slate-gray);
+		--card-foreground: var(--pure-white);
+		--popover: var(--slate-gray);
+		--popover-foreground: var(--pure-white);
+		--primary: var(--stratus-blue);
+		--primary-foreground: var(--pure-white);
+		--secondary: var(--silver-gray);
+		--secondary-foreground: var(--slate-gray);
+		--muted: #3A4A5A;
+		--muted-foreground: var(--silver-gray);
+		--accent: var(--emerald-green);
+		--accent-foreground: var(--pure-white);
+		--info: var(--stratus-blue);
+		--info-foreground: var(--pure-white);
+		--success: var(--emerald-green);
+		--success-foreground: var(--pure-white);
+		--warning: var(--color-amber-300);
+		--warning-foreground: var(--color-amber-950);
+		--error: var(--color-red-800);
+		--error-foreground: var(--pure-white);
+		--border: #4A5A6A;
+		--input: #4A5A6A;
+		--outline: var(--stratus-blue);
+		--radius: 0.5rem;
+	}
+
+	* {
+		@apply border-border;
+	}
+	*:focus-visible {
+		@apply outline-outline;
+	}
+	html {
+		@apply bg-background text-foreground scheme-light dark:scheme-dark;
+	}
+	button {
+		@apply cursor-pointer;
+	}
+}
+
+@layer utilities {
+	/* transition-colors but without outline-color transition property */
+	.starwind-transition-colors {
+		transition-property: color, background-color, border-color, text-decoration-color, fill, stroke,
+			--tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+		transition-timing-function: var(--default-transition-timing-function);
+		transition-duration: var(--default-transition-duration);
+	}
+	
+	/* Stratus Brand Typography */
+	.stratus-heading {
+		font-family: var(--font-heading);
+		font-weight: 700;
+		color: var(--stratus-blue);
+	}
+	
+	.stratus-heading-secondary {
+		font-family: var(--font-heading);
+		font-weight: 700;
+		color: var(--slate-gray);
+	}
+	
+	.stratus-body {
+		font-family: var(--font-body);
+		font-weight: 400;
+		color: var(--slate-gray);
+	}
+	
+	.stratus-tagline {
+		font-family: var(--font-accent);
+		font-weight: 600;
+		color: var(--stratus-blue);
+	}
+	
+	/* Stratus Brand Colors */
+	.bg-stratus-blue { background-color: var(--stratus-blue); }
+	.bg-slate-gray { background-color: var(--slate-gray); }
+	.bg-pure-white { background-color: var(--pure-white); }
+	.bg-emerald-green { background-color: var(--emerald-green); }
+	.bg-silver-gray { background-color: var(--silver-gray); }
+	
+	.text-stratus-blue { color: var(--stratus-blue); }
+	.text-slate-gray { color: var(--slate-gray); }
+	.text-pure-white { color: var(--pure-white); }
+	.text-emerald-green { color: var(--emerald-green); }
+	.text-silver-gray { color: var(--silver-gray); }
+	.text-black { color: var(--text-black); }
+	
+	.border-stratus-blue { border-color: var(--stratus-blue); }
+	.border-slate-gray { border-color: var(--slate-gray); }
+	.border-emerald-green { border-color: var(--emerald-green); }
+	.border-silver-gray { border-color: var(--silver-gray); }
+	
+	/* CTA Button Styles */
+	.stratus-cta {
+		background-color: var(--slate-gray);
+		color: var(--pure-white);
+		font-family: var(--font-accent);
+		font-weight: 600;
+		border-radius: 0.5rem;
+		transition: all 0.3s ease;
+	}
+	
+	.stratus-cta:hover {
+		background-color: var(--stratus-blue);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(0, 174, 239, 0.3);
+	}
+}

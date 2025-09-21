@@ -1,22 +1,51 @@
-<!doctype html>
+---
+import "@/styles/starwind.css";
+import "@/styles/index.css";
+import Nav from "@/components/Nav/Nav.astro";
+import Footer from "@/components/Footer/Footer.astro";
+import BaseHead from "@/layouts/BaseHead.astro";
+
+interface Props {
+  type?: "blog" | "general";
+  title: string;
+  description: string;
+  heroImage?: ImageMetadata;
+  noindex?: boolean; // you need to opt-in to no indexing, as it hides the page from search engines
+}
+const {
+  type = "general",
+  title,
+  description,
+  heroImage,
+  noindex = false,
+} = Astro.props as Props;
+---
+
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <BaseHead
+      type={type}
+      title={title}
+      description={description}
+      noindex={noindex}
+    />
+  </head>
+  <body id="'body">
+    <div class="min-h-[100lvh] flex flex-col">
+      <Nav />
+      <main class="flex-grow">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
 </html>
 
 <style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+  html,
+  body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
 </style>

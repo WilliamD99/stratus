@@ -1,0 +1,70 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  variant?: "primary" | "secondary" | "accent";
+  size?: "sm" | "md" | "lg";
+  href?: string;
+}
+
+const {
+  title,
+  description,
+  variant = "primary",
+  size = "md",
+  href,
+} = Astro.props;
+
+const sizeClasses = {
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8",
+};
+
+const variantClasses = {
+  primary: "bg-white text-gray-700 hover:shadow-blue-100",
+  secondary: "text-white hover:shadow-gray-400",
+  accent: "text-white hover:shadow-green-100",
+};
+
+const variantStyles = {
+  primary: "border-color: #00AEEF; color: #2E3A46;",
+  secondary:
+    "background-color: #2E3A46; border-color: #BDC3C7; color: #FFFFFF;",
+  accent: "background-color: #2ECC71; border-color: #2ECC71; color: #FFFFFF;",
+};
+
+const cardClasses = `
+  ${sizeClasses[size]} 
+  ${variantClasses[variant]}
+  border-2 rounded-lg shadow-lg hover:shadow-xl
+  transition-all duration-300 hover:transform hover:-translate-y-1
+  cursor-pointer group
+`;
+
+const Element = href ? "a" : "div";
+---
+
+<Element
+  class={cardClasses}
+  style={variantStyles[variant]}
+  {...href && { href }}
+>
+  <div class="space-y-4">
+    <h3
+      class="stratus-heading text-xl transition-colors duration-300"
+      style="group-hover: color: #00AEEF;"
+    >
+      {title}
+    </h3>
+    <p class="stratus-body leading-relaxed">
+      {description}
+    </p>
+    <slot />
+  </div>
+</Element>
+
+<style>
+  @import "tailwindcss/theme" theme(reference);
+  @import "@/styles/tailwind-theme.css" theme(reference);
+</style>
