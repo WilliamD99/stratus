@@ -1,5 +1,7 @@
 ---
 import Button from "@/components/starwind/button/Button.astro";
+import { Image } from "astro:assets";
+import aboutImage from "@/assets/about.jpg";
 ---
 
 <section id="about" class="w-full bg-white py-12 sm:py-20 lg:py-24 xl:py-28">
@@ -46,8 +48,8 @@ import Button from "@/components/starwind/button/Button.astro";
         <div class="relative">
           <!-- Main Image -->
           <div class="relative overflow-hidden rounded-2xl shadow-2xl">
-            <img
-              src="/src/assets/about.jpg"
+            <Image
+              src={aboutImage}
               alt="Professional cleaning team at work"
               class="w-full h-[400px] sm:h-[500px] lg:h-[550px] object-cover brightness-90"
               loading="lazy"

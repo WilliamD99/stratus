@@ -13,10 +13,6 @@ const navConfig: navItem[] = [
 		link: "#about",
 	},
 	{
-		text: "Services",
-		link: "#services",
-	},
-	{
 		text: "Why Choose Us",
 		link: "#values",
 	},
