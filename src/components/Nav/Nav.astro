@@ -13,7 +13,7 @@ interface Props {
 
 <div
   id="nav__container"
-  class="fixed top-0 left-0 py-1 z-30 flex w-full flex-col border-b border-b-transparent bg-transparent backdrop-blur transition-all duration-300"
+  class="fixed top-0 left-0 py-1 z-30 flex w-full flex-col navbar--scrolled transition-all duration-300"
 >
   <div class="mx-auto container flex w-full">
     <div class="site-container flex h-16 w-full items-center">
@@ -57,36 +57,4 @@ interface Props {
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(189, 195, 199, 0.3);
   }
-
-  .navbar--initial {
-    @apply border-b-transparent bg-transparent;
-  }
 </style>
-
-<script>
-  let navbar: HTMLElement | null;
-
-  function scrollHandler() {
-    if (navbar) {
-      if (window.scrollY > 50) {
-        // if we have scrolled down the page a bit, add a frosted-glass look to the navbar
-        navbar.classList.add("navbar--scrolled");
-        navbar.classList.remove("navbar--initial");
-      } else {
-        navbar.classList.remove("navbar--scrolled");
-        navbar.classList.add("navbar--initial");
-      }
-    }
-  }
-
-  function initNav() {
-    navbar = document.getElementById("nav__container");
-    window.addEventListener("scroll", scrollHandler, { passive: true });
-  }
-
-  // runs on initial page load
-  initNav();
-
-  // runs on view transitions navigation. Not needed if item has "transition:persist"
-  document.addEventListener("astro:after-swap", initNav);
-</script>
