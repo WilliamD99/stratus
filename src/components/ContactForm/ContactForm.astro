@@ -14,10 +14,7 @@ import Button from "@/components/starwind/button/Button.astro";
           class="text-3xl sm:text-4xl lg:text-5xl leading-tight mb-6 font-bold"
         >
           Ready to Transform
-          <span
-            class="block text-transparent bg-clip-text font-bold"
-            style="background: linear-gradient(to right, #00AEEF, #2ECC71, #2E3A46); -webkit-background-clip: text; background-clip: text;"
-          >
+          <span class="block text-stratus-blue font-bold">
             Your Building?
           </span>
         </h2>
@@ -27,11 +24,55 @@ import Button from "@/components/starwind/button/Button.astro";
         </p>
       </div>
 
+      <!-- Success Message (Hidden by default) -->
+      <div
+        id="success-message"
+        class="bg-emerald-50 border border-emerald-200 rounded-2xl shadow-xl p-8 lg:p-12 text-center hidden"
+      >
+        <div class="flex justify-center mb-6">
+          <div
+            class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center"
+          >
+            <svg
+              class="w-8 h-8 text-emerald-600"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd"></path>
+            </svg>
+          </div>
+        </div>
+        <h3 class="text-2xl font-bold text-slate-gray mb-4">Thank You!</h3>
+        <p class="text-lg text-slate-gray mb-6">
+          Your request has been successfully submitted. We've received your
+          building information and will get back to you within 24 hours with a
+          customized cleaning solution.
+        </p>
+        <p class="text-sm text-slate-gray/80 mb-6">
+          A confirmation email has been sent to your email address.
+        </p>
+        <button
+          id="submit-another"
+          class="inline-flex items-center px-6 py-3 bg-stratus-blue text-white font-semibold rounded-lg hover:bg-stratus-blue/90 transition-colors duration-200"
+        >
+          Submit Another Request
+        </button>
+      </div>
+
       <!-- Contact Form -->
       <div
+        id="contact-form"
         class="bg-white rounded-2xl shadow-xl border border-silver-gray/20 p-8 lg:p-12"
       >
-        <form class="space-y-6" action="#" method="POST">
+        <form
+          id="contact-form-element"
+          class="space-y-6"
+          action="#"
+          method="POST"
+        >
           <!-- Personal Information -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Name Field -->
@@ -40,7 +81,7 @@ import Button from "@/components/starwind/button/Button.astro";
                 for="name"
                 class="block text-sm font-semibold text-slate-gray mb-2"
               >
-                Full Name <span class="text-red-500">*</span>
+                Your Name <span class="text-red-500">*</span>
               </label>
               <input
                 type="text"
@@ -97,8 +138,8 @@ import Button from "@/components/starwind/button/Button.astro";
               />
             </div>
 
-            <!-- Floors and Units -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Floors, Units, and Parkade -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
               <!-- Number of Floors -->
               <div>
                 <label
@@ -107,19 +148,15 @@ import Button from "@/components/starwind/button/Button.astro";
                 >
                   Number of Floors <span class="text-red-500">*</span>
                 </label>
-                <select
+                <input
+                  type="number"
                   id="floors"
                   name="floors"
                   required
-                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray"
-                >
-                  <option value="">Select number of floors</option>
-                  <option value="3-5">3-5 floors</option>
-                  <option value="6-10">6-10 floors</option>
-                  <option value="11-20">11-20 floors</option>
-                  <option value="21-30">21-30 floors</option>
-                  <option value="30+">30+ floors</option>
-                </select>
+                  min="1"
+                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray"
+                  placeholder="Enter number of floors"
+                />
               </div>
 
               <!-- Number of Units -->
@@ -130,19 +167,33 @@ import Button from "@/components/starwind/button/Button.astro";
                 >
                   Number of Units <span class="text-red-500">*</span>
                 </label>
-                <select
+                <input
+                  type="number"
                   id="units"
                   name="units"
                   required
-                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray"
+                  min="1"
+                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray"
+                  placeholder="Enter number of units"
+                />
+              </div>
+
+              <!-- Parkade Levels -->
+              <div>
+                <label
+                  for="parkade-levels"
+                  class="block text-sm font-semibold text-slate-gray mb-2"
                 >
-                  <option value="">Select number of units</option>
-                  <option value="10-25">10-25 units</option>
-                  <option value="26-50">26-50 units</option>
-                  <option value="51-100">51-100 units</option>
-                  <option value="101-200">101-200 units</option>
-                  <option value="200+">200+ units</option>
-                </select>
+                  Parkade Levels
+                </label>
+                <input
+                  type="number"
+                  id="parkade-levels"
+                  name="parkade-levels"
+                  min="0"
+                  class="w-full px-4 py-3 bg-white border border-silver-gray rounded-lg focus:ring-2 focus:ring-stratus-blue focus:border-stratus-blue transition-colors duration-200 text-slate-gray placeholder-silver-gray"
+                  placeholder="Enter number of parkade levels"
+                />
               </div>
             </div>
 
@@ -291,7 +342,7 @@ import Button from "@/components/starwind/button/Button.astro";
         <div
           class="flex flex-col sm:flex-row justify-center items-center gap-6 text-slate-gray"
         >
-          <a
+          <!-- <a
             href="tel:+1234567890"
             class="flex items-center gap-2 hover:text-stratus-blue transition-colors"
           >
@@ -301,7 +352,7 @@ import Button from "@/components/starwind/button/Button.astro";
               ></path>
             </svg>
             (123) 456-7890
-          </a>
+          </a> -->
           <a
             href="mailto:info@stratusjanitorial.com"
             class="flex items-center gap-2 hover:text-stratus-blue transition-colors"
@@ -325,6 +376,7 @@ import Button from "@/components/starwind/button/Button.astro";
   /* Custom styles for better form appearance */
   input[type="text"],
   input[type="email"],
+  input[type="number"],
   select,
   textarea {
     appearance: none;
@@ -361,6 +413,89 @@ import Button from "@/components/starwind/button/Button.astro";
 
   input:valid,
   select:valid {
-    border-color: #2ecc71;
+    border-color: #00aeef;
+  }
+
+  /* Enhanced focus and hover styles for better blue theme consistency */
+  input:hover:not(:focus),
+  select:hover:not(:focus),
+  textarea:hover:not(:focus) {
+    border-color: rgba(0, 174, 239, 0.3);
+  }
+
+  /* Checkbox enhanced styling */
+  input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 174, 239, 0.2);
+  }
+
+  input[type="checkbox"]:hover {
+    transform: scale(1.05);
+    transition: transform 0.1s ease;
+  }
+
+  /* Success message animation */
+  #success-message {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById(
+      "contact-form-element"
+    ) as HTMLFormElement;
+    const contactFormDiv = document.getElementById("contact-form");
+    const successMessage = document.getElementById("success-message");
+    const submitAnotherBtn = document.getElementById("submit-another");
+
+    // Handle form submission
+    if (form && contactFormDiv && successMessage) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Simulate form submission (replace with actual form handling)
+        setTimeout(() => {
+          // Hide the form and show success message
+          contactFormDiv.classList.add("hidden");
+          successMessage.classList.remove("hidden");
+
+          // Scroll to success message
+          successMessage.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }, 500); // Simulate processing time
+      });
+    }
+
+    // Handle "Submit Another Request" button
+    if (submitAnotherBtn && form && contactFormDiv && successMessage) {
+      submitAnotherBtn.addEventListener("click", function () {
+        // Reset form
+        form.reset();
+
+        // Hide success message and show form again
+        successMessage.classList.add("hidden");
+        contactFormDiv.classList.remove("hidden");
+
+        // Scroll back to form
+        contactFormDiv.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      });
+    }
+  });
+</script>

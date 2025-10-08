@@ -1,11 +1,11 @@
 ---
 import siteData from "@/config/siteData.json";
-import logo from "@/assets/stratus_ver.svg";
+import logo from "@/assets/stratus.svg";
 import { Image } from "astro:assets";
 ---
 
 <a
-  class="primary-focus flex items-center align-middle pl-4 md:pl-0"
+  class="primary-focus relative flex items-center align-middle pl-4 md:pl-8"
   href="/"
   aria-label="Home"
   class=""
@@ -44,14 +44,16 @@ import { Image } from "astro:assets";
       </g>
     </svg>
   </div> -->
-  <!-- <Image
-    src={logo}
-    alt="Cosmic Themes logo"
-    loading="eager"
-    width={200}
-    height={200}
-    class="h-10 w-10 md:h-42 md:w-42 pt-6"
-  /> -->
+  <div
+    class="relative h-8 w-auto md:h-24 md:w-auto rounded-full overflow-hidden"
+  >
+    <Image
+      src={logo}
+      alt="Stratus logo"
+      loading="eager"
+      class="object-cover w-full h-full"
+    />
+  </div>
   <div class="text-lg md:text-2xl font-semibold text-white">
     {siteData.name}
   </div>
