@@ -30,13 +30,11 @@ interface Props {
               {navData.map((navItem) => <NavLink navItem={navItem} />)}
             </ul>
           </nav>
-          <Button
-            variant="primary"
-            class="my-auto hidden md:block"
-            href="#contact"
-          >
-            Free Estimate
-          </Button>
+          <div class="hidden md:block">
+            <Button variant="primary" class="my-auto" href="#contact">
+              Free Estimate
+            </Button>
+          </div>
 
           <!-- mobile nav menu, only load on small screens where it is visible -->
           <div class="md:hidden">
