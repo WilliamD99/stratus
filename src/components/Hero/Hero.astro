@@ -1,5 +1,7 @@
 ---
 import Button from "@/components/starwind/button/Button.astro";
+import { Image } from "astro:assets";
+import heroImage from "@/assets/hero.jpg";
 ---
 
 <section
@@ -7,13 +9,22 @@ import Button from "@/components/starwind/button/Button.astro";
   class="relative min-h-screen w-full overflow-hidden"
   style="background: linear-gradient(135deg, #00AEEF 0%, #2E3A46 50%, #2E3A46 100%)"
 >
-  <!-- Background image placeholder -->
-  <div class="absolute inset-0 bg-black/40 z-10"></div>
+  <!-- Background image -->
+  <div class="absolute inset-0 z-0">
+    <Image
+      src={heroImage}
+      alt="Professional cleaning service background"
+      class="w-full h-full object-cover object-center"
+      loading="eager"
+      format="webp"
+    />
+  </div>
+  <!-- Background overlays -->
   <div
-    class="absolute inset-0 bg-cover bg-center bg-no-repeat"
-    style="background-image: linear-gradient(135deg, rgba(0, 174, 239, 0.7), rgba(46, 58, 70, 0.8)), url('/src/assets/hero.jpg');"
+    class="absolute inset-0 bg-gradient-to-br from-blue-600/70 via-slate-700/80 to-slate-800/90 z-10"
   >
   </div>
+  <div class="absolute inset-0 bg-black/20 z-10"></div>
 
   <!-- Hero content -->
   <div

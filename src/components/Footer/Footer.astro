@@ -11,12 +11,12 @@ import { Image } from "astro:assets";
       <!-- First Column: Logo + Company Name + Description -->
       <div class="space-y-4">
         <div class="flex items-center space-x-3">
-          <div class="relative h-24 w-auto md:h-36">
+          <div class="relative h-24 w-auto md:h-32 overflow-hidden">
             <Image
               src={logo}
               alt={`${siteData.name} logo`}
               loading="lazy"
-              class="w-full h-full object-cover"
+              class="w-full h-full object-contain object-left"
             />
           </div>
         </div>
