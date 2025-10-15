@@ -1,30 +1,32 @@
 ---
 import siteData from "@/config/siteData.json";
 import navConfig from "@/config/navData.json";
-import logo from "@/assets/stratus_with_text.svg";
+import logo from "@/assets/stratus_with_text.png";
 import { Image } from "astro:assets";
 ---
 
-<footer class="pt-12 pb-6 mt-auto bg-slate-gray">
+<footer class="py-6 mt-auto bg-slate-gray">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- First Column: Logo + Company Name + Description -->
       <div class="space-y-4">
         <div class="flex items-center space-x-3">
-          <Image
-            src={logo}
-            alt={`${siteData.name} logo`}
-            loading="lazy"
-            class="h-44 w-44"
-          />
+          <div class="relative h-24 w-auto md:h-36">
+            <Image
+              src={logo}
+              alt={`${siteData.name} logo`}
+              loading="lazy"
+              class="w-full h-full object-cover"
+            />
+          </div>
         </div>
-        <p class="text-sm leading-relaxed max-w-xs" style="color: #BDC3C7">
+        <!-- <p class="text-sm leading-relaxed max-w-xs" style="color: #BDC3C7">
           {siteData.description}
-        </p>
+        </p> -->
       </div>
 
       <!-- Second Column: Address + Contact -->
-      <div class="space-y-4 md:text-right">
+      <div class="space-y-4 md:text-right flex flex-col justify-end">
         <h3 class="text-lg text-white">Contact Information</h3>
         <div class="space-y-3 text-sm" style="color: #BDC3C7">
           <!-- <div class="flex items-start md:justify-end space-x-2">
@@ -90,14 +92,14 @@ import { Image } from "astro:assets";
       </div>
 
       <!-- Third Column: Navigation Links -->
-      <div class="space-y-4">
+      <div class="space-y-4 flex flex-col justify-end">
         <h3 class="text-lg text-white md:text-right">Quick Links</h3>
         <nav class="space-y-2">
           {
             navConfig.map((navItem) => (
               <a
                 href={navItem.link}
-                class="block text-sm hover:text-white transition-colors duration-200 md:text-right"
+                class="block text-sm hover:text-blue-400 transition-colors duration-200 md:text-right"
                 style="color: #BDC3C7"
                 {...(navItem.newTab && {
                   target: "_blank",

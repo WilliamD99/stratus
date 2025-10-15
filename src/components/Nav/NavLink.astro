@@ -15,11 +15,7 @@ const { text, link, newTab = false } = navItem;
 <li>
   <a
     class:list={[
-      `primary-focus hover:text-yellow-400 relative block w-full px-4 py-2 font-medium transition text-white ${className}`,
-      {
-        // styling for current active page link
-        "text-base-600": Astro.url.pathname === link,
-      },
+      `primary-focus hover:text-blue-400 relative block w-full px-4 py-2 font-medium transition text-white ${className}`,
     ]}
     href={link}
     target={newTab ? "_blank" : ""}
