@@ -5,18 +5,18 @@ import logo from "@/assets/stratus_with_text.png";
 import { Image } from "astro:assets";
 ---
 
-<footer class="py-6 mt-auto bg-slate-gray">
+<footer class="py-6 mt-auto bg-white">
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- First Column: Logo + Company Name + Description -->
       <div class="space-y-4">
         <div class="flex items-center space-x-3">
-          <div class="relative h-24 w-auto md:h-32 overflow-hidden">
+          <div class="relative h-24 w-auto md:h-36">
             <Image
               src={logo}
               alt={`${siteData.name} logo`}
               loading="lazy"
-              class="w-full h-full object-contain object-left"
+              class="w-full h-full object-cover"
             />
           </div>
         </div>
@@ -27,8 +27,8 @@ import { Image } from "astro:assets";
 
       <!-- Second Column: Address + Contact -->
       <div class="space-y-4 md:text-right flex flex-col justify-end">
-        <h3 class="text-lg text-white">Contact Information</h3>
-        <div class="space-y-3 text-sm" style="color: #BDC3C7">
+        <h3 class="text-lg text-black font-semibold">Contact Information</h3>
+        <div class="space-y-3 text-sm text-black/90">
           <!-- <div class="flex items-start md:justify-end space-x-2">
             <div class="w-4 flex justify-end">
               <svg
@@ -47,25 +47,7 @@ import { Image } from "astro:assets";
               <div>Delta, BC V4K0C3</div>
             </div>
           </div> -->
-          <div class="flex items-center md:justify-end space-x-2">
-            <div class="w-4 flex justify-end">
-              <svg
-                class="w-4 h-4 flex-shrink-0"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"
-                ></path>
-              </svg>
-            </div>
-            <a
-              href="tel:+16043757364"
-              class="hover:text-white transition-colors duration-200"
-            >
-              (236)-381-5468
-            </a>
-          </div>
+
           <div class="flex items-center md:justify-end space-x-2">
             <div class="w-4 flex justify-end">
               <svg
@@ -93,14 +75,15 @@ import { Image } from "astro:assets";
 
       <!-- Third Column: Navigation Links -->
       <div class="space-y-4 flex flex-col justify-end">
-        <h3 class="text-lg text-white md:text-right">Quick Links</h3>
+        <h3 class="text-lg text-black font-semibold md:text-right">
+          Quick Links
+        </h3>
         <nav class="space-y-2">
           {
             navConfig.map((navItem) => (
               <a
                 href={navItem.link}
-                class="block text-sm hover:text-blue-400 transition-colors duration-200 md:text-right"
-                style="color: #BDC3C7"
+                class="block text-sm text-black/90 hover:text-emerald-green transition-colors duration-200 md:text-right"
                 {...(navItem.newTab && {
                   target: "_blank",
                   rel: "noopener noreferrer",
@@ -116,22 +99,19 @@ import { Image } from "astro:assets";
     </div>
 
     <!-- Bottom Section: Copyright -->
-    <div
-      class="border-t mt-8 pt-6"
-      style="border-color: rgba(189, 195, 199, 0.3)"
-    >
+    <div class="border-t mt-8 pt-6" style="border-color: rgba(0, 0, 0, 0.2)">
       <div
         class="flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0"
       >
-        <p class="text-sm text-right" style="color: #BDC3C7">
+        <p class="text-sm text-right text-black/90">
           © {new Date().getFullYear()}
           {siteData.name}. All rights reserved.
         </p>
-        <div class="flex space-x-6 text-sm" style="color: #BDC3C7">
+        <div class="flex space-x-6 text-sm text-black/90">
           <span class="">
             Built and Maintained by <a
               href="https://github.com/WilliamD99"
-              class="font-semibold hover:text-white transition-colors duration-200"
+              class="font-semibold hover:text-emerald-green transition-colors duration-200"
               >Will Doan</a
             >
           </span>

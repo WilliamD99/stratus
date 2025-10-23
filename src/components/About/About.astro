@@ -1,10 +1,9 @@
 ---
-import Button from "@/components/starwind/button/Button.astro";
 import { Image } from "astro:assets";
-import aboutImage from "@/assets/about.jpg";
+import aboutImage from "@/assets/clean.png";
 ---
 
-<section id="about" class="w-full bg-white py-12 sm:py-20 lg:py-24 xl:py-28">
+<section id="about" class="w-full bg-gray-50 py-12 sm:py-20 lg:py-24 xl:py-28">
   <div class="max-w-7xl 2xl:max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
     <div
       class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 2xl:gap-36"
@@ -59,13 +58,11 @@ import aboutImage from "@/assets/about.jpg";
 
           <!-- Decorative elements -->
           <div
-            class="absolute -top-4 -right-4 w-24 h-24 rounded-full opacity-10"
-            style="background-color: #00AEEF"
+            class="absolute -top-4 -right-4 w-24 h-24 bg-stratus-blue rounded-full opacity-10"
           >
           </div>
           <div
-            class="absolute -bottom-4 -left-4 w-32 h-32 rounded-full opacity-10"
-            style="background-color: #2ECC71"
+            class="absolute -bottom-4 -left-4 w-32 h-32 bg-emerald-green rounded-full opacity-10"
           >
           </div>
 
@@ -74,10 +71,8 @@ import aboutImage from "@/assets/about.jpg";
             class="absolute bottom-6 left-6 bg-white rounded-lg shadow-lg p-4 max-w-[200px]"
           >
             <div class="text-center">
-              <div class="text-2xl font-bold" style="color: #00AEEF">10+</div>
-              <div class="text-sm" style="color: #2E3A46">
-                Years of Experience
-              </div>
+              <div class="text-2xl font-bold text-stratus-blue">10+</div>
+              <div class="text-sm text-slate-gray">Years of Experience</div>
             </div>
           </div>
         </div>

@@ -64,12 +64,14 @@
 
 @layer base {
 	:root {
-		/* Stratus Brand Colors */
-		--stratus-blue: #00AEEF;
-		--slate-gray: #2E3A46;
-		--pure-white: #FFFFFF;
-		--emerald-green: #2ECC71;
+		/* Stratus Brand Colors - Blue & Green Primary */
+		--stratus-blue: #3c91e6;
+		--emerald-green: #A2D729;
+		--slate-gray: #342E37;
+		--pure-white: #FAFFFD;
+		--coral-orange: #FA824C;
 		--silver-gray: #BDC3C7;
+		--light-gray: #f5f7fa;
 		--text-black: #111111;
 		
 		/* Theme Variables */
@@ -81,7 +83,7 @@
 		--popover-foreground: var(--slate-gray);
 		--primary: var(--stratus-blue);
 		--primary-foreground: var(--pure-white);
-		--secondary: var(--slate-gray);
+		--secondary: var(--emerald-green);
 		--secondary-foreground: var(--pure-white);
 		--muted: var(--silver-gray);
 		--muted-foreground: var(--slate-gray);
@@ -184,23 +186,26 @@
 	.bg-slate-gray { background-color: var(--slate-gray); }
 	.bg-pure-white { background-color: var(--pure-white); }
 	.bg-emerald-green { background-color: var(--emerald-green); }
+	.bg-coral-orange { background-color: var(--coral-orange); }
 	.bg-silver-gray { background-color: var(--silver-gray); }
 	
 	.text-stratus-blue { color: var(--stratus-blue); }
 	.text-slate-gray { color: var(--slate-gray); }
 	.text-pure-white { color: var(--pure-white); }
 	.text-emerald-green { color: var(--emerald-green); }
+	.text-coral-orange { color: var(--coral-orange); }
 	.text-silver-gray { color: var(--silver-gray); }
 	.text-black { color: var(--text-black); }
 	
 	.border-stratus-blue { border-color: var(--stratus-blue); }
 	.border-slate-gray { border-color: var(--slate-gray); }
 	.border-emerald-green { border-color: var(--emerald-green); }
+	.border-coral-orange { border-color: var(--coral-orange); }
 	.border-silver-gray { border-color: var(--silver-gray); }
 	
 	/* CTA Button Styles */
 	.stratus-cta {
-		background-color: var(--slate-gray);
+		background-color: var(--stratus-blue);
 		color: var(--pure-white);
 		font-family: var(--font-accent);
 		font-weight: 600;
@@ -209,8 +214,8 @@
 	}
 	
 	.stratus-cta:hover {
-		background-color: var(--stratus-blue);
+		background-color: var(--emerald-green);
 		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(0, 174, 239, 0.3);
+		box-shadow: 0 4px 12px rgba(162, 215, 41, 0.4);
 	}
 }

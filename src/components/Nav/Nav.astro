@@ -11,27 +11,38 @@ interface Props {
 }
 ---
 
+<!-- Placeholder to prevent layout shift when nav becomes fixed -->
+<div id="nav__placeholder" class="w-full" style="display: none;"></div>
+
 <div
   id="nav__container"
-  class="fixed top-0 left-0 py-1 z-30 flex w-full flex-col navbar--scrolled transition-all duration-300"
+  class="absolute top-0 left-0 md:py-4 z-30 flex w-full flex-col"
 >
   <div class="mx-auto container flex w-full">
     <div class="site-container flex h-16 w-full items-center">
       <header class="flex h-full w-full items-center">
         <!-- home button / image -->
         <div class="flex flex-auto justify-start h-full">
-          <SiteLogo />
+          <SiteLogo variant="white" id="site-logo" />
         </div>
 
         <!-- desktop nav menu -->
         <div class="flex flex-auto justify-end">
           <nav class="hidden md:block">
-            <ul class="flex h-fit items-center px-4">
-              {navData.map((navItem) => <NavLink navItem={navItem} />)}
+            <ul class="flex h-fit items-center space-x-4">
+              {
+                navData.map((navItem) => (
+                  <NavLink navItem={navItem} class="text-lg text" />
+                ))
+              }
             </ul>
           </nav>
-          <div class="hidden md:block">
-            <Button variant="primary" class="my-auto" href="#contact">
+          <div class="hidden md:block pl-6">
+            <Button
+              variant="primary"
+              class="my-auto bg-stratus-blue"
+              href="#contact"
+            >
               Free Estimate
             </Button>
           </div>
@@ -50,9 +61,178 @@ interface Props {
   @import "tailwindcss/theme" theme(reference);
   @import "@/styles/tailwind-theme.css" theme(reference);
 
-  .navbar--scrolled {
-    background-color: rgba(46, 58, 70, 0.95);
+  #nav__container {
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  #nav__container.navbar--fixed {
+    position: fixed;
+  }
+
+  #nav__container.navbar--scrolled {
+    background-color: rgba(255, 255, 253, 1);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(189, 195, 199, 0.3);
+    border-bottom: 1px solid rgba(60, 145, 230, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  #nav__container.navbar--scrolled :global(nav a) {
+    color: #000 !important;
+  }
+
+  #nav__container.navbar--scrolled :global(nav a:hover) {
+    color: rgb(59 130 246) !important; /* blue-500 */
   }
 </style>
+
+<script>
+  import { gsap } from "gsap";
+
+  function initNavScroll() {
+    const nav = document.getElementById("nav__container");
+    const placeholder = document.getElementById("nav__placeholder");
+    const logo = document.getElementById("site-logo");
+    if (!nav || !placeholder) return;
+
+    let isFixed = false;
+    let lastScrollY = window.scrollY;
+    const scrollThreshold = 1000;
+    const fastScrollThreshold = 100; // If scrolling more than 100px at once, skip animation
+
+    // Get nav height and set placeholder height
+    const navHeight = nav.offsetHeight;
+    placeholder.style.height = `${navHeight}px`;
+
+    // Set initial state
+    gsap.set(nav, { y: 0 });
+
+    // Function to update logo based on scroll state
+    function updateLogo(isScrolled: boolean) {
+      if (!logo) return;
+      const img = logo.querySelector("img");
+      if (!img) return;
+
+      if (isScrolled) {
+        // Switch to blue logo when scrolled
+        img.src = "/src/assets/stratus_blue.png";
+      } else {
+        // Switch to white logo when at top
+        img.src = "/src/assets/stratus_white.png";
+      }
+    }
+
+    // Function to update mobile menu icon color based on scroll state
+    function updateMobileIcon(isScrolled: boolean) {
+      const mobileIcon = document.querySelector(
+        "#mobile-nav__burger .stroke-current"
+      );
+      if (!mobileIcon) return;
+
+      if (isScrolled) {
+        // Switch to black icon when scrolled
+        mobileIcon.classList.remove("text-white");
+        mobileIcon.classList.add("text-black");
+      } else {
+        // Switch to white icon when at top
+        mobileIcon.classList.remove("text-black");
+        mobileIcon.classList.add("text-white");
+      }
+    }
+
+    function handleScroll() {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = Math.abs(currentScrollY - lastScrollY);
+
+      if (currentScrollY < scrollThreshold) {
+        // Scrolled back up - slide nav up and return to absolute positioning
+        if (isFixed) {
+          // Hide placeholder immediately to prevent layout shift
+          if (placeholder) placeholder.style.display = "none";
+          gsap.to(nav, {
+            y: -navHeight,
+            autoAlpha: 0,
+            duration: 0.4,
+            ease: "power2.in",
+            onComplete: () => {
+              console.log("onComplete");
+              // After sliding up, reset to absolute positioning
+              nav?.classList.remove("navbar--scrolled", "navbar--fixed");
+              gsap.set(nav, { y: 0, autoAlpha: 1 });
+              isFixed = false;
+              // Update logo to white after animation completes
+              updateLogo(false);
+              // Update mobile icon to white after animation completes
+              updateMobileIcon(false);
+            },
+          });
+          // Check if user scrolled fast (skip animation if fast scroll)
+          // if (scrollDelta > fastScrollThreshold) {
+          //   // Fast scroll - skip animation, reset immediately
+          //   nav?.classList.remove("navbar--scrolled", "navbar--fixed");
+          //   gsap.set(nav, { y: 0 });
+          //   isFixed = false;
+          // } else {
+          //   // Normal scroll - slide up with animation
+
+          // }
+        }
+      } else {
+        // Past threshold - make fixed and slide in with white background
+        if (!isFixed) {
+          // Update logo to blue when scrolled
+          updateLogo(true);
+          // Update mobile icon to black when scrolled
+          updateMobileIcon(true);
+
+          // Show placeholder to prevent layout shift
+          if (placeholder) placeholder.style.display = "block";
+
+          // Make nav fixed
+          nav?.classList.add("navbar--fixed", "navbar--scrolled");
+
+          // Slide in from top
+          gsap.fromTo(
+            nav!,
+            { y: -navHeight },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.5,
+              ease: "power2.out",
+            }
+          );
+          isFixed = true;
+        }
+      }
+
+      lastScrollY = currentScrollY;
+    }
+
+    // Throttle scroll events for better performance
+    let ticking = false;
+    window.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial check
+    handleScroll();
+
+    // Set initial logo and mobile icon state
+    updateLogo(false);
+    updateMobileIcon(false);
+  }
+
+  // Initialize on page load
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initNavScroll);
+  } else {
+    initNavScroll();
+  }
+</script>

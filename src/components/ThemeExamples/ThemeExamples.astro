@@ -29,40 +29,36 @@ import StratusCard from "@/components/StratusCard/StratusCard.astro";
     <!-- Color Examples -->
     <div class="mb-12">
       <h2 class="stratus-heading text-2xl mb-6">Color Palette</h2>
-      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         <div
-          class="h-20 rounded-lg flex items-center justify-center"
-          style="background-color: #00AEEF"
+          class="h-20 rounded-lg flex items-center justify-center bg-stratus-blue"
         >
           <span class="text-white text-sm font-medium">Stratus Blue</span>
         </div>
         <div
-          class="h-20 rounded-lg flex items-center justify-center"
-          style="background-color: #2E3A46"
+          class="h-20 rounded-lg flex items-center justify-center bg-slate-gray"
         >
           <span class="text-white text-sm font-medium">Slate Gray</span>
         </div>
         <div
-          class="bg-white border-2 h-20 rounded-lg flex items-center justify-center"
-          style="border-color: #BDC3C7"
+          class="bg-pure-white border-2 border-silver-gray h-20 rounded-lg flex items-center justify-center"
         >
-          <span class="text-sm font-medium" style="color: #2E3A46"
-            >Pure White</span
-          >
+          <span class="text-sm font-medium text-slate-gray">Pure White</span>
         </div>
         <div
-          class="h-20 rounded-lg flex items-center justify-center"
-          style="background-color: #2ECC71"
+          class="h-20 rounded-lg flex items-center justify-center bg-emerald-green"
         >
-          <span class="text-white text-sm font-medium">Emerald Green</span>
+          <span class="text-white text-sm font-medium">Lime Green</span>
         </div>
         <div
-          class="h-20 rounded-lg flex items-center justify-center"
-          style="background-color: #BDC3C7"
+          class="h-20 rounded-lg flex items-center justify-center bg-coral-orange"
         >
-          <span class="text-sm font-medium" style="color: #2E3A46"
-            >Silver Gray</span
-          >
+          <span class="text-white text-sm font-medium">Coral Orange</span>
+        </div>
+        <div
+          class="h-20 rounded-lg flex items-center justify-center bg-silver-gray"
+        >
+          <span class="text-sm font-medium text-slate-gray">Silver Gray</span>
         </div>
       </div>
     </div>
@@ -72,18 +68,10 @@ import StratusCard from "@/components/StratusCard/StratusCard.astro";
       <h2 class="stratus-heading text-2xl mb-6">Buttons & CTAs</h2>
       <div class="flex flex-wrap gap-4">
         <button class="stratus-cta"> Primary CTA Button </button>
-        <Button
-          variant="primary"
-          class="text-white hover:opacity-90"
-          style="background-color: #00AEEF"
-        >
+        <Button variant="primary" class="text-white hover:opacity-90">
           Stratus Button
         </Button>
-        <Button
-          variant="secondary"
-          class="text-white hover:opacity-90"
-          style="background-color: #2ECC71"
-        >
+        <Button variant="success" class="text-white hover:opacity-90">
           Eco-Friendly Action
         </Button>
       </div>

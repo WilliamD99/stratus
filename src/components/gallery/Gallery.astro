@@ -1,0 +1,95 @@
+---
+import { Image } from "astro:assets";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/starwind/carousel";
+import gallery1 from "@/assets/gallery/gallery_1.jpg";
+import gallery3 from "@/assets/gallery/gallery_3.jpg";
+import gallery4 from "@/assets/gallery/gallery_4.jpg";
+import gallery5 from "@/assets/gallery/gallery_5.jpg";
+import gallery7 from "@/assets/gallery/gallery_7.jpg";
+import gallery2 from "@/assets/gallery/gallery_8.jpg";
+import gallery6 from "@/assets/gallery/gallery_9.jpg";
+import gallery8 from "@/assets/gallery/gallery_10.jpg";
+import gallery9 from "@/assets/gallery/gallery_11.jpg";
+import gallery10 from "@/assets/gallery/gallery_12.jpg";
+import gallery11 from "@/assets/gallery/gallery_13.jpg";
+import gallery12 from "@/assets/gallery/gallery_14.jpg";
+import gallery13 from "@/assets/gallery/gallery_15.jpg";
+import gallery14 from "@/assets/gallery/gallery_16.jpg";
+---
+
+<section id="gallery" class="w-full bg-white py-12 sm:py-20 lg:py-24 xl:py-28">
+  <div class="max-w-7xl 2xl:max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="overflow-hidden">
+      <div class="order-1 lg:order-1">
+        <div class="relative w-fit mb-6">
+          <p class="text-3xl lg:text-5xl leading-tight mb-4 font-bold">
+            Gallery
+            <span class="h-[2px] w-full bg-stratus-blue block mt-2"></span>
+          </p>
+        </div>
+        <!-- Description -->
+        <p
+          class="text-lg sm:text-xl max-w-3xl text-gray-600 leading-relaxed mb-12"
+        >
+          Discover the quality of our work through our portfolio of completed
+          projects. Each image showcases our commitment to excellence in
+          high-rise residential cleaning.
+        </p>
+        <Carousel opts={{ loop: true }} class="cursor-grab">
+          <CarouselContent>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery1} alt="Gallery 1" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery3} alt="Gallery 3" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery4} alt="Gallery 4" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery5} alt="Gallery 5" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery7} alt="Gallery 7" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery2} alt="Gallery 2" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery6} alt="Gallery 6" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery8} alt="Gallery 8" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery9} alt="Gallery 9" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery10} alt="Gallery 10" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery11} alt="Gallery 11" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery12} alt="Gallery 12" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery13} alt="Gallery 13" loading="lazy" />
+            </CarouselItem>
+            <CarouselItem class="basis-1/2 md:basis-1/3">
+              <Image src={gallery14} alt="Gallery 14" loading="lazy" />
+            </CarouselItem>
+          </CarouselContent>
+          <CarouselNext />
+          <CarouselPrevious />
+        </Carousel>
+      </div>
+    </div>
+  </div>
+</section>

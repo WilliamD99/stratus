@@ -1,14 +1,26 @@
 ---
-import logo from "@/assets/stratus_text.png";
+import logoBlue from "@/assets/stratus_blue.png";
+import logoWhite from "@/assets/stratus_white.png";
 import { Image } from "astro:assets";
+
+interface Props {
+  variant?: "blue" | "white";
+  id?: string;
+}
+
+const { variant = "blue", id } = Astro.props;
+const logo = variant === "white" ? logoWhite : logoBlue;
 ---
 
 <a
-  class="primary-focus relative flex items-center align-middle md:pl-8"
+  class="primary-focus relative flex items-center align-middle"
   href="/"
   aria-label="Home"
+  id={id}
 >
-  <div class="relative h-16 w-auto md:h-24 md:w-auto overflow-hidden">
+  <div
+    class="relative h-20 w-auto md:h-24 md:w-auto overflow-hidden ml-4 md:ml-0"
+  >
     <Image
       src={logo}
       alt="Stratus logo"
