@@ -110,15 +110,13 @@ interface Props {
     // Function to update logo based on scroll state
     function updateLogo(isScrolled: boolean) {
       if (!logo) return;
-      const img = logo.querySelector("img");
-      if (!img) return;
 
       if (isScrolled) {
-        // Switch to blue logo when scrolled
-        img.src = "/src/assets/stratus_blue.png";
+        // Add class to show blue logo when scrolled
+        logo.classList.add("logo-scrolled");
       } else {
-        // Switch to white logo when at top
-        img.src = "/src/assets/stratus_white.png";
+        // Remove class to show white logo when at top
+        logo.classList.remove("logo-scrolled");
       }
     }
 

@@ -9,7 +9,6 @@ interface Props {
 }
 
 const { variant = "blue", id } = Astro.props;
-const logo = variant === "white" ? logoWhite : logoBlue;
 ---
 
 <a
@@ -21,11 +20,36 @@ const logo = variant === "white" ? logoWhite : logoBlue;
   <div
     class="relative h-20 w-auto md:h-24 md:w-auto overflow-hidden ml-4 md:ml-0"
   >
+    <!-- White logo (default for transparent nav) -->
     <Image
-      src={logo}
+      src={logoWhite}
       alt="Stratus logo"
       loading="eager"
-      class="object-contain object-left w-full h-full"
+      class="logo-white object-contain object-left w-full h-full"
+    />
+    <!-- Blue logo (for scrolled nav) -->
+    <Image
+      src={logoBlue}
+      alt="Stratus logo"
+      loading="eager"
+      class="logo-blue object-contain object-left w-full h-full absolute top-0 left-0 opacity-0"
     />
   </div>
 </a>
+
+<style>
+  .logo-white {
+    transition: opacity 0.3s ease;
+  }
+  .logo-blue {
+    transition: opacity 0.3s ease;
+  }
+
+  /* When scrolled, hide white logo and show blue logo */
+  .logo-scrolled .logo-white {
+    opacity: 0;
+  }
+  .logo-scrolled .logo-blue {
+    opacity: 1;
+  }
+</style>
