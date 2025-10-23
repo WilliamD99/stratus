@@ -41,6 +41,9 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 		build: {
 			assetsInlineLimit: 0
+		},
+		server: {
+			allowedHosts: "98be4e96fd74.ngrok-free.app"
 		}
 	},
 	adapter: vercel({

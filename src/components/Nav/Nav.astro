@@ -29,18 +29,23 @@ interface Props {
         <!-- desktop nav menu -->
         <div class="flex flex-auto justify-end">
           <nav class="hidden md:block">
-            <ul class="flex h-fit items-center space-x-4">
+            <ul
+              class="flex h-fit items-center space-x-2 lg:space-x-4 flex-nowrap"
+            >
               {
                 navData.map((navItem) => (
-                  <NavLink navItem={navItem} class="text-lg text" />
+                  <NavLink
+                    navItem={navItem}
+                    class="text-base xl:text-lg text"
+                  />
                 ))
               }
             </ul>
           </nav>
-          <div class="hidden md:block pl-6">
+          <div class="hidden md:block pl-3 lg:pl-6">
             <Button
               variant="primary"
-              class="my-auto bg-stratus-blue"
+              class="my-auto stratus-cta"
               href="#contact"
             >
               Free Estimate

@@ -65,7 +65,7 @@ import { Image } from "astro:assets";
             </div>
             <a
               href="mailto:info@stratusjanitorial.com"
-              class="hover:text-white transition-colors duration-200"
+              class="hover:underline transition-colors duration-200"
             >
               info@stratusjanitorial.com
             </a>
@@ -83,7 +83,7 @@ import { Image } from "astro:assets";
             navConfig.map((navItem) => (
               <a
                 href={navItem.link}
-                class="block text-sm text-black/90 hover:text-emerald-green transition-colors duration-200 md:text-right"
+                class="block text-sm text-black/90 hover:underline transition-colors duration-200 md:text-right"
                 {...(navItem.newTab && {
                   target: "_blank",
                   rel: "noopener noreferrer",
