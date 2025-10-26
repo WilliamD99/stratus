@@ -9,7 +9,7 @@ import { Image } from "astro:assets";
   <div class="container mx-auto px-4">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- First Column: Logo + Company Name + Description -->
-      <div class="space-y-4">
+      <div class="pr-36 md:pr-0">
         <div class="flex items-center space-x-3">
           <div class="relative h-24 w-auto md:h-36">
             <Image
@@ -20,9 +20,6 @@ import { Image } from "astro:assets";
             />
           </div>
         </div>
-        <!-- <p class="text-sm leading-relaxed max-w-xs" style="color: #BDC3C7">
-          {siteData.description}
-        </p> -->
       </div>
 
       <!-- Second Column: Address + Contact -->
