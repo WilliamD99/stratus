@@ -43,7 +43,6 @@ export default defineConfig({
 			assetsInlineLimit: 0
 		},
 		server: {
-			allowedHosts: "c54e900bb333.ngrok-free.app"
 		}
 	},
 	adapter: vercel({
