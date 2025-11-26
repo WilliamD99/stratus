@@ -25,6 +25,10 @@ export default defineConfig({
 					"chevron-down",
 					"category",
 					"calendar-event",
+					"shield",
+					"award",
+					"circle-check",
+					"rosette-discount-check"
 				]
 			}
 		}),
@@ -43,6 +47,7 @@ export default defineConfig({
 			assetsInlineLimit: 0
 		},
 		server: {
+			allowedHosts: ["4f75d76898d1.ngrok-free.app"]
 		}
 	},
 	adapter: vercel({

@@ -1,0 +1,153 @@
+---
+import Button from "@/components/starwind/button/Button.astro";
+import { Image } from "astro:assets";
+import heroImage from "@/assets/hero-new.jpg";
+import { Icon } from "astro-icon/components";
+---
+
+<section
+  class="relative min-h-[90vh] lg:min-h-[100vh] 2xl:min-h-[90vh] mt-16 md:mt-0 flex flex-col-reverse w-full overflow-hidden"
+>
+  {/* Desktop: Background Image */}
+  <div class="absolute inset-0 hidden lg:block">
+    <Image
+      src={heroImage}
+      alt="Clean modern office lobby"
+      class="h-full w-full object-cover"
+      loading="eager"
+    />
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-background/85 via-background/50 to-transparent"
+    >
+    </div>
+  </div>
+
+  {/* Mobile: Stacked layout */}
+  <div class="lg:hidden">
+    {/* Mobile Image */}
+    <div class="relative h-[45vh] w-full">
+      <Image
+        src={heroImage}
+        alt="Clean modern office lobby"
+        class="h-full w-full object-cover"
+        loading="eager"
+      />
+      <div
+        class="absolute inset-0 bg-linear-to-t from-transparent via-transparent to-background"
+      >
+      </div>
+    </div>
+  </div>
+
+  {/* Content */}
+  <div class="relative lg:absolute lg:inset-0 flex items-center">
+    <div class="container mx-auto px-6 pt-10 pb-6 md:pt-32 md:px-12 2xl:px-0">
+      <div class="max-w-2xl 2xl:max-w-4xl">
+        {/* Title */}
+        <h1
+          class="font-serif text-5xl md:text-6xl 2xl:text-7xl tracking-wide text-balance"
+          style="color: var(--stratus-blue);"
+        >
+          Stratus Janitorial
+        </h1>
+
+        {/* Description */}
+        <p
+          class="mt-4 md:mt-6 2xl:mt-10 text-base md:text-lg 2xl:text-2xl text-muted-foreground leading-relaxed max-w-xl 2xl:max-w-3xl text-shadow-xs"
+        >
+          Creating pristine, healthy environments where your team and visitors
+          feel welcomed. Professional cleaning services you can trust.
+        </p>
+
+        {/* CTA Button */}
+        <div class="mt-8 md:mt-10 2xl:mt-12">
+          <Button
+            size="lg"
+            class="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-base 2xl:text-lg font-medium rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            href="#contact"
+          >
+            Get a Free Quote
+          </Button>
+        </div>
+
+        {/* Trust Indicators */}
+        <div class="mt-12 md:mt-16 grid grid-cols-1 gap-6 2xl:gap-10">
+          <div class="flex items-center gap-3 2xl:gap-4 group">
+            <div
+              class="flex h-10 w-10 2xl:h-12 2xl:w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors duration-300"
+            >
+              <Icon name="tabler:shield" class="h-5 w-5 2xl:h-7 2xl:w-7" />
+            </div>
+            <div class="flex flex-col space-y-1 2xl:space-y-2">
+              <span class="text-sm 2xl:text-xl font-bold text-foreground"
+                >WorkSafe BC compliant</span
+              >
+              <p
+                class="text-xs 2xl:text-base font-semibold text-muted-foreground"
+              >
+                Certified workplace safety standards
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 group">
+            <div
+              class="flex h-10 w-10 2xl:h-12 2xl:w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors duration-300"
+            >
+              <Icon
+                name="tabler:rosette-discount-check"
+                class="h-5 w-5 2xl:h-7 2xl:w-7"
+              />
+            </div>
+            <div class="flex flex-col space-y-1 2xl:space-y-2">
+              <span class="text-sm 2xl:text-xl font-bold text-foreground"
+                >$5 million liability insurance</span
+              >
+              <p
+                class="text-xs 2xl:text-base font-semibold text-muted-foreground"
+              >
+                Comprehensive coverage protection
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 group">
+            <div
+              class="flex h-10 w-10 2xl:h-12 2xl:w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors duration-300"
+            >
+              <Icon name="tabler:award" class="h-5 w-5 2xl:h-7 2xl:w-7" />
+            </div>
+            <div class="flex flex-col space-y-1 2xl:space-y-2">
+              <span class="text-sm 2xl:text-xl font-bold text-foreground"
+                >APPA cleaning standards</span
+              >
+              <p
+                class="text-xs 2xl:text-base font-semibold text-muted-foreground"
+              >
+                Industry-leading quality benchmarks
+              </p>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 group">
+            <div
+              class="flex h-10 w-10 2xl:h-12 2xl:w-12 items-center justify-center rounded-full bg-primary text-primary-foreground transition-colors duration-300"
+            >
+              <Icon
+                name="tabler:circle-check"
+                class="h-5 w-5 2xl:h-7 2xl:w-7"
+              />
+            </div>
+            <div class="flex flex-col space-y-1 2xl:space-y-2">
+              <span class="text-sm 2xl:text-xl font-bold text-foreground"
+                >WHMIS certified janitors</span
+              >
+              <p
+                class="text-xs 2xl:text-base text-muted-foreground text-shadow-xs"
+              >
+                Trained in hazardous materials handling
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

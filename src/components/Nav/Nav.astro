@@ -16,11 +16,13 @@ interface Props {
 
 <div
   id="nav__container"
-  class="absolute top-0 left-0 md:py-4 z-30 flex w-full flex-col"
+  class="absolute top-0 left-0 z-30 flex w-full flex-col"
 >
-  <div class="mx-auto container flex w-full">
-    <div class="site-container flex h-16 w-full items-center">
-      <header class="flex h-full w-full items-center">
+  <div class="mx-auto flex w-full">
+    <div class="site-container flex h-16 lg:h-auto w-full items-center">
+      <header
+        class="flex h-full w-full items-center shadow-lg lg:shadow-none lg:px-8"
+      >
         <!-- home button / image -->
         <div class="flex flex-auto justify-start h-full">
           <SiteLogo variant="white" id="site-logo" />
@@ -28,7 +30,7 @@ interface Props {
 
         <!-- desktop nav menu -->
         <div class="flex flex-auto justify-end">
-          <nav class="hidden md:block">
+          <nav class="hidden lg:block">
             <ul
               class="flex h-fit items-center space-x-2 lg:space-x-4 flex-nowrap"
             >
@@ -36,13 +38,13 @@ interface Props {
                 navData.map((navItem) => (
                   <NavLink
                     navItem={navItem}
-                    class="text-base xl:text-lg text"
+                    class="text-base lg:text-base 2xl:text-lg"
                   />
                 ))
               }
             </ul>
           </nav>
-          <div class="hidden md:block pl-3 lg:pl-6">
+          <div class="hidden lg:block pl-3 lg:pl-6">
             <Button
               variant="primary"
               class="my-auto stratus-cta"
@@ -53,7 +55,7 @@ interface Props {
           </div>
 
           <!-- mobile nav menu, only load on small screens where it is visible -->
-          <div class="md:hidden">
+          <div class="lg:hidden">
             <MobileNav />
           </div>
         </div>
@@ -116,12 +118,21 @@ interface Props {
     function updateLogo(isScrolled: boolean) {
       if (!logo) return;
 
-      if (isScrolled) {
-        // Add class to show blue logo when scrolled
+      // Check if we're on mobile/tablet (lg breakpoint is 1024px in Tailwind)
+      const isMobileOrTablet = window.innerWidth < 1024;
+
+      if (isMobileOrTablet) {
+        // Always show blue logo on mobile and tablet
         logo.classList.add("logo-scrolled");
       } else {
-        // Remove class to show white logo when at top
-        logo.classList.remove("logo-scrolled");
+        // On desktop, toggle based on scroll position
+        if (isScrolled) {
+          // Add class to show blue logo when scrolled
+          logo.classList.add("logo-scrolled");
+        } else {
+          // Remove class to show white logo when at top
+          logo.classList.remove("logo-scrolled");
+        }
       }
     }
 
@@ -132,15 +143,9 @@ interface Props {
       );
       if (!mobileIcon) return;
 
-      if (isScrolled) {
-        // Switch to black icon when scrolled
-        mobileIcon.classList.remove("text-white");
-        mobileIcon.classList.add("text-black");
-      } else {
-        // Switch to white icon when at top
-        mobileIcon.classList.remove("text-black");
-        mobileIcon.classList.add("text-white");
-      }
+      // Always keep icon black
+      mobileIcon.classList.remove("text-white");
+      mobileIcon.classList.add("text-black");
     }
 
     function handleScroll() {
@@ -224,10 +229,16 @@ interface Props {
       }
     });
 
+    // Handle window resize to update logo on orientation change
+    window.addEventListener("resize", () => {
+      updateLogo(isFixed);
+    });
+
     // Initial check
     handleScroll();
 
     // Set initial logo and mobile icon state
+    // updateLogo will check screen size internally
     updateLogo(false);
     updateMobileIcon(false);
   }

@@ -1,25 +1,36 @@
 ---
 import Button from "@/components/starwind/button/Button.astro";
 import { Image } from "astro:assets";
-import heroImage from "@/assets/gallery/hero.jpg";
+import heroImage from "@/assets/hero-new.jpg";
+import heroImageMobile from "@/assets/hero-phone.jpg";
 ---
 
-<section id="hero" class="relative min-h-screen w-full overflow-hidden">
+<section
+  id="hero"
+  class="relative h-[85vh] md:min-h-screen w-full overflow-hidden"
+>
   <!-- Background image -->
   <div class="absolute inset-0 z-0">
     <Image
       src={heroImage}
       alt="Professional cleaning service background"
-      class="w-full h-full object-cover object-center"
+      class="hidden md:block w-full h-full object-cover object-center blur-[1px]"
+      loading="eager"
+      format="webp"
+    />
+    <Image
+      src={heroImageMobile}
+      alt="Professional cleaning service background"
+      class="block md:hidden w-full h-full object-cover object-center blur-[0.5px]"
       loading="eager"
       format="webp"
     />
   </div>
 
-  <div
+  <!-- <div
     class="absolute inset-0 bg-gradient-to-br from-amber-200/15 via-orange-200/10 to-yellow-100/8 z-10"
   >
-  </div>
+  </div> -->
 
   <!-- Hero content -->
   <div
@@ -29,7 +40,7 @@ import heroImage from "@/assets/gallery/hero.jpg";
       <!-- Main headline -->
       <h1
         class="text-white font-bold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-5xl 2xl:text-8xl leading-tight mb-6 tracking-wide"
-        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 1px 1px 2px rgba(255, 255, 255, 0.5);"
+        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 1px 1px 2px rgba(255, 255, 255, 0.5);"
       >
         Stratus Janitorial
         <!-- <span class="block text-white font-bold"> Cleaning Services </span> -->
@@ -38,8 +49,8 @@ import heroImage from "@/assets/gallery/hero.jpg";
 
       <!-- Description -->
       <p
-        class="text-white text-semibold text-base sm:text-sm lg:text-lg 2xl:text-2xl mx-auto mt-4 mb-4 2xl:mt-8 2xl:mb-12 max-w-2xl 2xl:max-w-3xl leading-relaxed"
-        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.6);"
+        class="text-stratus-blue font-semibold text-base sm:text-sm lg:text-lg 2xl:text-2xl mx-auto mt-4 mb-4 2xl:mt-8 2xl:mb-12 max-w-2xs 2xl:max-w-4xl leading-relaxed"
+        style="text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3), 1px 1px 2px rgba(255, 255, 255, 0.5);"
       >
         Janitorial services tailored to Strata Corporations and multiunit
         buildings
@@ -64,8 +75,7 @@ import heroImage from "@/assets/gallery/hero.jpg";
               </svg>
             </div>
             <span
-              class="text-white text-sm sm:text-base 2xl:text-lg font-medium"
-              style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);"
+              class="text-stratus-blue text-sm sm:text-base 2xl:text-lg font-medium"
               >WorkSafe BC compliant</span
             >
           </div>
@@ -85,8 +95,7 @@ import heroImage from "@/assets/gallery/hero.jpg";
               </svg>
             </div>
             <span
-              class="text-white text-sm sm:text-base 2xl:text-lg font-medium"
-              style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);"
+              class="text-stratus-blue text-sm sm:text-base 2xl:text-lg font-medium"
             >
               5 million liability insurance</span
             >
@@ -107,8 +116,7 @@ import heroImage from "@/assets/gallery/hero.jpg";
               </svg>
             </div>
             <span
-              class="text-white text-sm sm:text-base 2xl:text-lg font-medium"
-              style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);"
+              class="text-stratus-blue text-sm sm:text-base 2xl:text-lg font-medium"
               >APPA cleaning standards</span
             >
           </div>
@@ -128,8 +136,7 @@ import heroImage from "@/assets/gallery/hero.jpg";
               </svg>
             </div>
             <span
-              class="text-white text-sm sm:text-base 2xl:text-lg font-medium"
-              style="text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);"
+              class="text-stratus-blue text-sm sm:text-base 2xl:text-lg font-medium"
               >WHMIS certified janitors</span
             >
           </div>

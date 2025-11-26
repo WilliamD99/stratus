@@ -19,7 +19,7 @@ import siteData from "@/config/siteData.json";
     <!-- hamburger icon to open menu -->
     <Icon
       name="tabler:menu-2"
-      class="m-auto inline-block h-6 w-6 stroke-current text-white"
+      class="m-auto inline-block h-6 w-6 stroke-current text-black"
       aria-hidden="true"
     />
   </button>
@@ -148,6 +148,15 @@ import siteData from "@/config/siteData.json";
 <style>
   @import "tailwindcss/theme" theme(reference);
   @import "@/styles/tailwind-theme.css" theme(reference);
+
+  /* Prevent double-tap zoom on mobile */
+  #mobile-nav__burger,
+  #mobile-nav__close,
+  #mobile-nav__backdrop {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
 
   .mobile-nav__backdrop--fade-in {
     animation: MobileNavFadeInAnimation ease-in-out 0.3s forwards;

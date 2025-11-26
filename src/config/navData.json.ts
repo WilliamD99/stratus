@@ -9,7 +9,7 @@ export type navItem = navLinkItem;
 
 const navConfig: navItem[] = [
 	{
-		text: "About",
+		text: "About Us",
 		link: "#about",
 	},
 	{
