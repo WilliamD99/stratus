@@ -10,6 +10,7 @@ import vercel from '@astrojs/vercel'
 export default defineConfig({
 	// Add your site URL here
 	// site: "https://stratus.cosmicthemes.com", 
+	site:"https://www.stratusjanitorial.ca/",
 	integrations: [
 		icon({
 			include: {
@@ -47,7 +48,7 @@ export default defineConfig({
 			assetsInlineLimit: 0
 		},
 		server: {
-			allowedHosts: ["4f75d76898d1.ngrok-free.app"]
+			allowedHosts: []
 		}
 	},
 	adapter: vercel({
