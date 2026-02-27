@@ -78,9 +78,14 @@ import Button from "@/components/starwind/button/Button.astro";
         <form
           id="contact-form-element"
           class="space-y-6"
-          action="#"
+          action="https://formsubmit.co/info@stratusjanitorial.ca"
           method="POST"
         >
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+          <input type="hidden" name="_subject" value="New Quote Request — stratusjanitorial.ca" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_captcha" value="false" />
+
           <!-- Personal Information -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             <!-- Name Field -->
@@ -427,47 +432,92 @@ import Button from "@/components/starwind/button/Button.astro";
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById(
-      "contact-form-element"
+      "contact-form-element",
     ) as HTMLFormElement;
     const contactFormDiv = document.getElementById("contact-form");
     const successMessage = document.getElementById("success-message");
     const submitAnotherBtn = document.getElementById("submit-another");
 
-    // Handle form submission
     if (form && contactFormDiv && successMessage) {
-      form.addEventListener("submit", function (e) {
-        e.preventDefault(); // Prevent default form submission
+      form.addEventListener("submit", async function (e) {
+        e.preventDefault();
 
-        // Simulate form submission (replace with actual form handling)
-        setTimeout(() => {
-          // Hide the form and show success message
-          contactFormDiv.classList.add("hidden");
-          successMessage.classList.remove("hidden");
+        const submitBtn = form.querySelector(
+          'button[type="submit"]',
+        ) as HTMLButtonElement;
+        const originalHTML = submitBtn.innerHTML;
+        submitBtn.innerHTML = "Sending…";
+        submitBtn.disabled = true;
+        submitBtn.classList.add("opacity-70", "cursor-not-allowed");
 
-          // Scroll to success message
-          successMessage.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-          });
-        }, 500); // Simulate processing time
+        const val = (id: string) =>
+          (form.querySelector(`#${id}`) as HTMLInputElement)?.value?.trim() ||
+          "";
+
+        const amenities =
+          Array.from(
+            form.querySelectorAll<HTMLInputElement>(
+              'input[name="amenities"]:checked',
+            ),
+          )
+            .map(
+              (cb) =>
+                cb.parentElement?.querySelector("span")?.textContent?.trim() ??
+                cb.value,
+            )
+            .join(", ") || "None selected";
+
+        const body = new FormData();
+        body.append("Submitted From", "Stratus Janitorial Website — Contact Form (stratusjanitorial.ca)");
+        body.append("Full Name", val("name"));
+        body.append("Email Address", val("email"));
+        body.append("Building Name", val("building-name"));
+        body.append("Number of Floors", val("floors"));
+        body.append("Number of Units", val("units"));
+        body.append("Parkade Levels", val("parkade-levels") || "N/A");
+        body.append("Building Amenities", amenities);
+        body.append("Additional Information", val("message") || "N/A");
+
+        body.append("_subject", "New Quote Request — stratusjanitorial.ca");
+        body.append("_replyto", val("email"));
+        body.append("_template", "table");
+        body.append("_captcha", "false");
+
+        try {
+          const res = await fetch(
+            "https://formsubmit.co/ajax/info@stratusjanitorial.ca",
+            { method: "POST", headers: { Accept: "application/json" }, body },
+          );
+          const data = await res.json();
+
+          if (res.ok && data.success) {
+            contactFormDiv.classList.add("hidden");
+            successMessage.classList.remove("hidden");
+            successMessage.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+          } else {
+            throw new Error(data.message || "Submission failed");
+          }
+        } catch {
+          alert(
+            "Something went wrong. Please try again or contact us directly at info@stratusjanitorial.ca",
+          );
+        } finally {
+          submitBtn.innerHTML = originalHTML;
+          submitBtn.disabled = false;
+          submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+        }
       });
     }
 
-    // Handle "Submit Another Request" button
     if (submitAnotherBtn && form && contactFormDiv && successMessage) {
       submitAnotherBtn.addEventListener("click", function () {
-        // Reset form
         form.reset();
-
-        // Hide success message and show form again
         successMessage.classList.add("hidden");
         contactFormDiv.classList.remove("hidden");
-
-        // Scroll back to form
-        contactFormDiv.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
+        contactFormDiv.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
   });
