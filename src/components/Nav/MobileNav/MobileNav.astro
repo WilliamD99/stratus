@@ -55,9 +55,10 @@ import siteData from "@/config/siteData.json";
 
       <div class="mx-1 mt-2 w-full px-4">
         <Button
+          id="mobile-nav__estimate"
           variant="primary"
           class="w-full"
-          href="https://cosmicthemes.com/themes/blogsmith-pro/"
+          href="#contact"
         >
           Get a Free Estimate
         </Button>
@@ -78,6 +79,29 @@ import siteData from "@/config/siteData.json";
   let mobileNavContent: HTMLElement | null;
   let mobileNavCloseBtn: HTMLElement | null;
   let mobileNavBackdrop: HTMLElement | null;
+
+  function closeMobileNav() {
+    if (
+      !mobileNavContainer?.classList.contains("open") ||
+      !mobileNavBurger ||
+      !mobileNavContent ||
+      !mobileNavBackdrop
+    ) {
+      return;
+    }
+
+    mobileNavContainer.classList.remove("open");
+    mobileNavBurger.setAttribute("aria-expanded", "false");
+
+    mobileNavContent.classList.remove("mobile-nav--slide-in");
+    mobileNavContent.classList.add("mobile-nav--slide-out");
+    setTimeout(() => {
+      mobileNavContent?.classList.add("hidden");
+    }, 300);
+
+    mobileNavBackdrop.classList.remove("mobile-nav__backdrop--fade-in");
+    mobileNavBackdrop.classList.add("mobile-nav__backdrop--fade-out");
+  }
 
   function toggleMobileNav(event: Event) {
     if (
@@ -101,23 +125,7 @@ import siteData from "@/config/siteData.json";
         mobileNavBackdrop.classList.remove("mobile-nav__backdrop--fade-out");
         mobileNavBackdrop.classList.add("mobile-nav__backdrop--fade-in");
       } else {
-        // dropdown is currently open, so close it
-        mobileNavContainer.classList.remove("open");
-        mobileNavBurger.setAttribute("aria-expanded", "false");
-
-        // mobile nav content drawer
-        mobileNavContent.classList.remove("mobile-nav--slide-in");
-        mobileNavContent.classList.add("mobile-nav--slide-out");
-        // make hidden after the slide out effect is done
-        setTimeout(() => {
-          mobileNavContent?.classList.add("hidden");
-        }, 300);
-
-        // backdrop button
-        mobileNavBackdrop?.classList.remove("mobile-nav__backdrop--fade-in");
-        mobileNavBackdrop?.classList.add("mobile-nav__backdrop--fade-out");
-
-        // set a timeout
+        closeMobileNav();
       }
     event.preventDefault();
     return false;
@@ -131,10 +139,18 @@ import siteData from "@/config/siteData.json";
     mobileNavCloseBtn = document.getElementById("mobile-nav__close");
     mobileNavBackdrop = document.getElementById("mobile-nav__backdrop");
 
+    const mobileNavEstimate = document.getElementById("mobile-nav__estimate");
+
     if (mobileNavBurger && mobileNavCloseBtn && mobileNavBackdrop) {
       mobileNavBurger.addEventListener("click", toggleMobileNav);
       mobileNavCloseBtn.addEventListener("click", toggleMobileNav);
       mobileNavBackdrop.addEventListener("click", toggleMobileNav);
+    }
+
+    if (mobileNavEstimate) {
+      mobileNavEstimate.addEventListener("click", () => {
+        closeMobileNav();
+      });
     }
   }
 
